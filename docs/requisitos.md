@@ -207,10 +207,14 @@ triaje:
 11. Asistente sin protocolo relevante: HTTP 200 con el aviso "no existe protocolo disponible" y `fuentes` vacío. LLM no disponible (circuito abierto): 503 con mensaje claro. Respuesta generada con citas inválidas: se descarta y se responde el aviso.
 12. `estado-urgencias` devuelve los 5 niveles (con 0 cuando no hay pacientes) y el total. Activos = `REGISTRADO` + `EN_CONSULTA`.
 13. Reporte RF-05: cubos horarios en UTC, intervalo `[desde, hasta)`; espera = primera entrada a consulta menos registro; los pacientes que nunca entraron a consulta cuentan en totales y niveles pero no en promedio ni p95; las horas sin registros no aparecen. Respuesta: lista de objetos por hora.
+14. Límites de entrada (el enunciado no los define): `quejaPrincipal` hasta 2000 caracteres, `pregunta` del asistente hasta 500, cuerpo de solicitud hasta 64 KB.
+15. `POST /triage/pacientes` acepta de forma opcional la cabecera `Idempotency-Key`; sin ella, el comportamiento es el del enunciado.
+16. Autenticación: JWT RS256 emitido por `triaje-servicio` (paquete `identidad`). `POST /auth/registro` y `POST /auth/login` son públicos; las cuentas nuevas no tienen permisos operativos hasta que un `ADMIN` asigne roles (`ENFERMERIA`, `MEDICO`, `ADMIN`); el `ADMIN` inicial sale de variables de entorno; sin refresh token. El asistente solo valida tokens con la clave pública.
+17. Asistente: si fallan los embeddings o el LLM, la respuesta es 503. El aviso "no existe protocolo disponible" solo se emite cuando la recuperación funcionó y no hubo coincidencia, o cuando se descarta una respuesta que no pasa la verificación determinista.
 
 ## Decisiones abiertas
 - **RF-06:** canal de alerta (propuesta en conversación: stream SSE reactivo como canal principal y webhook opcional) y su ADR.
-- **Autenticación:** JWT con roles frente a API key. El evaluador debe poder llamar a la URL desplegada; hay que definir cómo obtiene credenciales.
+- **Autenticación:** JWT con registro público de cuentas (decidido por el usuario). Falta confirmar los detalles de la interpretación 16 y la matriz de autorización de `docs/guias/seguridad.md`. El evaluador debe poder obtener credenciales en la URL desplegada: el README documenta el flujo.
 - **Embeddings:** proveedor remoto frente a modelo local (afecta resiliencia y el circuit breaker).
 - **Azure:** AKS frente a Container Apps; Kafka administrado frente a Kafka dentro del clúster.
 - **Vector store** (propuesta: Redis) y **proveedor de LLM** (propuesta: tier gratuito de Gemini): se documentan en ADR.

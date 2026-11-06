@@ -1,0 +1,9 @@
+plugins { id 'vidacruz.convenciones-java' }
+
+dependencies {
+    testImplementation platform(libs.junit.bom)
+    testImplementation libs.junit.jupiter
+    testImplementation libs.archunit
+    testImplementation libs.blockhound
+    testRuntimeOnly libs.junit.platform.launcher
+}

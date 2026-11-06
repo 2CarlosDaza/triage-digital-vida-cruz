@@ -14,7 +14,7 @@ El proyecto se desarrolla en pocos días por una sola persona que trabaja con un
 4. **Integración continua** (GitHub Actions): `./gradlew build` en cada pull request y en cada push a `main`.
 5. **Protección de `main`:** sin push forzado, historial lineal, CI en verde obligatorio y borrado automático de ramas integradas. Sin aprobaciones obligatorias de terceros (hay un solo desarrollador).
 6. **Lo inacabado no se expone:** no se conecta funcionalidad a medias; si debe integrarse antes de estar lista, queda detrás de una propiedad de configuración desactivada por defecto.
-7. **Versionado:** etiquetas `vX.Y.Z` sobre `main` en cada hito funcional; el despliegue sale de `main` o de una etiqueta.
+7. **Versionado:** etiquetas `vX.Y.Z` en cada hito funcional. Las crea el responsable sobre `main`, después de integrar (con "Rebase and merge" los commits cambian de identificador, así que una etiqueta creada antes en la rama quedaría apuntando a commits que no están en `main`). El agente de código no crea etiquetas. El despliegue sale de `main` o de una etiqueta.
 8. **Commits:** Conventional Commits con descripción en español (ADR-0002).
 
 ## Alternativas consideradas

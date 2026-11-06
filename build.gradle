@@ -1,0 +1,10 @@
+plugins { id 'base' }
+
+allprojects {
+    group = 'co.vidacruz.digital'
+    version = '0.1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}

@@ -1,0 +1,8 @@
+package co.vidacruz.digital.triaje.dominio;
+
+/** Estrategia pura que determina si aplican las condiciones de un nivel. */
+public interface ReglaClasificacion {
+    Nivel nivel();
+
+    boolean aplica(SignosVitales signosVitales);
+}

@@ -1,0 +1,87 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'com.diffplug.spotless'
+}
+
+def catalogoVersiones = project.extensions
+        .getByType(org.gradle.api.artifacts.VersionCatalogsExtension)
+        .named('libs')
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+}
+
+jacoco {
+    toolVersion = catalogoVersiones.findVersion('jacoco').get().requiredVersion
+}
+
+spotless {
+    java {
+        target 'src/**/*.java'
+        googleJavaFormat().aosp()
+        removeUnusedImports()
+    }
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    jvmArgs '-XX:+AllowRedefinitionToAddDeleteMethods'
+}
+
+tasks.named('test', Test) {
+    exclude '**/*PruebaIntegracion*'
+}
+
+tasks.register('pruebaIntegracion', Test) {
+    description = 'Ejecuta únicamente las pruebas de integración.'
+    group = 'verification'
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    useJUnitPlatform()
+    include '**/*PruebaIntegracion*'
+    jvmArgs '-XX:+AllowRedefinitionToAddDeleteMethods'
+    shouldRunAfter tasks.named('test')
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('pruebaIntegracion')
+    dependsOn tasks.named('jacocoTestCoverageVerification')
+    dependsOn tasks.named('spotlessCheck')
+}
+
+tasks.named('jacocoTestCoverageVerification') {
+    violationRules {
+        rule {
+            element = 'BUNDLE'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.70
+            }
+        }
+        rule {
+            element = 'PACKAGE'
+            includes = ['co.vidacruz.digital.triaje.dominio']
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.90
+            }
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.80
+            }
+        }
+        rule {
+            element = 'PACKAGE'
+            includes = ['co.vidacruz.digital.triaje.aplicacion']
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.80
+            }
+        }
+    }
+}

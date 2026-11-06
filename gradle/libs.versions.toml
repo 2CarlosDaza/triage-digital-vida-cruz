@@ -1,0 +1,13 @@
+[versions]
+junit = "5.12.2"
+archunit = "1.5.1"
+blockhound = "1.0.18.RELEASE"
+spotless = "8.10.4"
+jacoco = "0.8.16"
+
+[libraries]
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+archunit = { module = "com.tngtech.archunit:archunit", version.ref = "archunit" }
+blockhound = { module = "io.projectreactor.tools:blockhound", version.ref = "blockhound" }

@@ -8,6 +8,8 @@ Fuente de vocabulario para el código (ADR-0002). Un término por concepto: si h
 |---|---|---|
 | Paciente | `Paciente`, `pacienteId` | Agregado principal |
 | Signos vitales | `SignosVitales` | Value object |
+| Excepción de dominio | `DominioExcepcion` | Base de las excepciones del dominio |
+| Datos inválidos | `DatosInvalidosExcepcion`, `camposInvalidos` | Acumula todos los campos fuera de rango de RF-01 |
 | Nombre completo | `nombreCompleto` | 3-100 caracteres |
 | Edad | `edad` | 0-120 años |
 | Frecuencia cardiaca (bpm) | `frecuenciaCardiaca` | |
@@ -69,6 +71,16 @@ Fuente de vocabulario para el código (ADR-0002). Un término por concepto: si h
 | Alerta de escalamiento | `AlertaEscalamiento`, `AlertaPuerto` | RF-06 |
 | Vista de urgencias | `EstadoUrgencias`, `VistaUrgenciasPuerto` | RF-04B; pacientes activos por nivel |
 | Paciente activo | `activo` | Estado distinto de `ALTA` |
+
+## Identidad y seguridad
+
+| Término | Identificador | Notas |
+|---|---|---|
+| Usuario | `Usuario`, `nombreUsuario` | Paquete `identidad` de triaje |
+| Rol | `Rol` | `ENFERMERIA`, `MEDICO`, `ADMIN` |
+| Cuenta sin permisos | `SIN_ROL` | Estado de una cuenta recién registrada |
+| Clave de idempotencia | `claveIdempotencia` | Cabecera `Idempotency-Key` (nombre del contrato) |
+| Respuesta descartada | `RespuestaDescartada` | No pasó la verificación determinista del asistente |
 
 ## Convenciones de nombres
 - Casos de uso como verbo + objeto: `RegistrarPacienteCasoDeUso`, `CambiarEstadoPacienteCasoDeUso`.

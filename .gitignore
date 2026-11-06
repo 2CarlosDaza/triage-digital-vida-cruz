@@ -1,0 +1,11 @@
+.gradle/
+.gradle-local/
+**/build/
+build/
+.idea/
+*.iml
+.vscode/
+.env
+!.env.example
+*.log
+out/
