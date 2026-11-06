@@ -1,5 +1,7 @@
 package co.vidacruz.digital.triaje.dominio;
 
+import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

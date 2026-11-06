@@ -1,4 +1,4 @@
-package co.vidacruz.digital.triaje.dominio;
+package co.vidacruz.digital.triaje.dominio.excepcion;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package co.vidacruz.digital.triaje.dominio;
+package co.vidacruz.digital.triaje.dominio.excepcion;
 
 public abstract class DominioExcepcion extends RuntimeException {
     protected DominioExcepcion(String mensaje) {

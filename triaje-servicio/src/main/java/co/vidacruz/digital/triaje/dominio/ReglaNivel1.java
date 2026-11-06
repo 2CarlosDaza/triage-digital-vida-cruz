@@ -1,5 +1,7 @@
 package co.vidacruz.digital.triaje.dominio;
 
+import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
+
 public final class ReglaNivel1 implements ReglaClasificacion {
     @Override
     public Nivel nivel() {

@@ -1,5 +1,7 @@
 package co.vidacruz.digital.triaje.dominio;
 
+import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
+
 import java.math.BigDecimal;
 
 public final class ReglaNivel3 implements ReglaClasificacion {

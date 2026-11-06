@@ -1,4 +1,6 @@
-package co.vidacruz.digital.triaje.dominio;
+package co.vidacruz.digital.triaje.dominio.enumeracion;
+
+import co.vidacruz.digital.triaje.dominio.excepcion.TransicionInvalidaExcepcion;
 
 import java.util.EnumSet;
 import java.util.Map;

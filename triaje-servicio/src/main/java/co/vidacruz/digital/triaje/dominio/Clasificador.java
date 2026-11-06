@@ -1,5 +1,7 @@
 package co.vidacruz.digital.triaje.dominio;
 
+import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
+
 import java.text.Normalizer;
 import java.util.Comparator;
 import java.util.List;

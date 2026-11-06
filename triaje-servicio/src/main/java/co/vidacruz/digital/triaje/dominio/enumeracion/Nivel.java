@@ -1,4 +1,4 @@
-package co.vidacruz.digital.triaje.dominio;
+package co.vidacruz.digital.triaje.dominio.enumeracion;
 
 public enum Nivel {
     CRITICO(1, "CRITICO", 5),

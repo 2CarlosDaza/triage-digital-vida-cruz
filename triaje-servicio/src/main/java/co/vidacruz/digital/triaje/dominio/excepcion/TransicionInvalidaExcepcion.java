@@ -1,4 +1,6 @@
-package co.vidacruz.digital.triaje.dominio;
+package co.vidacruz.digital.triaje.dominio.excepcion;
+
+import co.vidacruz.digital.triaje.dominio.enumeracion.EstadoClinico;
 
 public final class TransicionInvalidaExcepcion extends DominioExcepcion {
     public TransicionInvalidaExcepcion(EstadoClinico origen, EstadoClinico destino) {

@@ -1,5 +1,7 @@
 package co.vidacruz.digital.triaje.dominio;
 
+import co.vidacruz.digital.triaje.dominio.excepcion.DatosInvalidosExcepcion;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;

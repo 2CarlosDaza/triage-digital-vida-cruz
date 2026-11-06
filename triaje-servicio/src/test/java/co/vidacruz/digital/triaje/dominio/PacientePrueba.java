@@ -1,5 +1,10 @@
 package co.vidacruz.digital.triaje.dominio;
 
+import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
+import co.vidacruz.digital.triaje.dominio.enumeracion.EstadoClinico;
+
+import co.vidacruz.digital.triaje.dominio.excepcion.DatosInvalidosExcepcion;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
