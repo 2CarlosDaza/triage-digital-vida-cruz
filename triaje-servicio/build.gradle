@@ -1,6 +1,23 @@
-plugins { id 'vidacruz.convenciones-java' }
+plugins {
+    id 'vidacruz.convenciones-java'
+    alias(libs.plugins.spring.boot)
+}
 
 dependencies {
+    implementation platform(libs.spring.boot.dependencies)
+    implementation libs.spring.boot.starter.data.r2dbc
+    implementation libs.flyway.core
+    runtimeOnly libs.r2dbc.postgresql
+    runtimeOnly libs.postgresql.jdbc
+    runtimeOnly libs.flyway.database.postgresql
+
+    testImplementation platform(libs.spring.boot.dependencies)
+    testImplementation platform(libs.testcontainers.bom)
+    testImplementation libs.spring.boot.starter.test
+    testImplementation libs.reactor.test
+    testImplementation libs.testcontainers.junit.jupiter
+    testImplementation libs.testcontainers.postgresql
+
     testImplementation platform(libs.junit.bom)
     testImplementation libs.junit.jupiter
     testImplementation libs.archunit

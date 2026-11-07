@@ -1,10 +1,9 @@
 package co.vidacruz.digital.triaje.dominio;
 
-import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;

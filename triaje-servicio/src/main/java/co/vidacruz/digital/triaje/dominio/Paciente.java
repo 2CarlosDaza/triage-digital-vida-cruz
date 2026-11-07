@@ -1,10 +1,8 @@
 package co.vidacruz.digital.triaje.dominio;
 
-import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
 import co.vidacruz.digital.triaje.dominio.enumeracion.EstadoClinico;
-
+import co.vidacruz.digital.triaje.dominio.enumeracion.Nivel;
 import co.vidacruz.digital.triaje.dominio.excepcion.DatosInvalidosExcepcion;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;

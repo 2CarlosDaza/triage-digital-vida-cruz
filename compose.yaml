@@ -1,0 +1,23 @@
+services:
+  postgresql:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: vida_cruz
+      POSTGRES_USER: ${TRIAJE_DB_FLYWAY_USUARIO:-vida_cruz_migracion}
+      POSTGRES_PASSWORD: ${TRIAJE_DB_FLYWAY_PASSWORD:?Define TRIAJE_DB_FLYWAY_PASSWORD en .env}
+      TRIAJE_DB_USUARIO: ${TRIAJE_DB_USUARIO:-vida_cruz_runtime}
+      TRIAJE_DB_PASSWORD: ${TRIAJE_DB_PASSWORD:?Define TRIAJE_DB_PASSWORD en .env}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - vida-cruz-postgresql:/var/lib/postgresql/data
+      - ./docker/postgresql/crear-usuario-runtime.sh:/docker-entrypoint-initdb.d/01-crear-usuario-runtime.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+volumes:
+  vida-cruz-postgresql:

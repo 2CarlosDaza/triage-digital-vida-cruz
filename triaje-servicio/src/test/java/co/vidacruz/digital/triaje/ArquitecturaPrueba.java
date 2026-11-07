@@ -74,8 +74,7 @@ class ArquitecturaPrueba {
                 "Consumidor",
                 "Adaptador",
                 "Propiedades");
-        exigirSufijos(
-                "infraestructura.ia", "Adaptador", "Servicio", "Propiedades", "Mapeador");
+        exigirSufijos("infraestructura.ia", "Adaptador", "Servicio", "Propiedades", "Mapeador");
         exigirSufijos(
                 "infraestructura.config", "Configuracion", "Propiedades", "Filtro", "Manejador");
         exigirSufijos("aplicacion.puerto", "Puerto");

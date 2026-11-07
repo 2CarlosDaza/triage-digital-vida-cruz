@@ -1,12 +1,10 @@
 package co.vidacruz.digital.triaje.dominio;
 
-import co.vidacruz.digital.triaje.dominio.enumeracion.EstadoClinico;
-
-import co.vidacruz.digital.triaje.dominio.excepcion.TransicionInvalidaExcepcion;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import co.vidacruz.digital.triaje.dominio.enumeracion.EstadoClinico;
+import co.vidacruz.digital.triaje.dominio.excepcion.TransicionInvalidaExcepcion;
 import java.time.Instant;
 import org.junit.jupiter.api.Test;
 

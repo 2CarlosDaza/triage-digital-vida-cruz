@@ -1,7 +1,6 @@
 package co.vidacruz.digital.triaje.dominio;
 
 import co.vidacruz.digital.triaje.dominio.enumeracion.EstadoClinico;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
